@@ -8,6 +8,8 @@ El objetivo del Hackathon es por un lado plantear una serie de desafíos o activ
 
 Recuerden que **no es necesario ni obligatorio completar todos los niveles**, lo que esperamos es que puedan elegir los temas que mas les interesan y profundizar en ellos.
 
+
+
 ## Niveles
 
 El mismo consta de 6 niveles (3 para servidores DNS Recursos y 3 para servidores DNS Autoritativos):
@@ -27,3 +29,20 @@ El mismo consta de 6 niveles (3 para servidores DNS Recursos y 3 para servidores
 1. Configurar un servidor Autoritativo siguiendo los lineamientos establecidos para la creación de la Zona, utilizando el software BIND.
 2. Configurar otros 2 servidores Autoritativos como secundarios del anterior, estableciendo lo necesario para que dichos secundarios sirvan la zona transfiriendo la misma desde el primario mediante el protocolo XFR. Estos 2 servidores públicos utilizarán los software BIND y NSD respectivamente.
 3. Firmar la Zona en el servidor primario utilizando el protocolo DNSSEC siguiendo los criterios establecidos para ello (algoritmo utilizado para la firma, tiempo de validez de la misma, etc).
+
+
+
+## Directivas para cada nivel
+
+
+
+#### A nivel de recursivos
+
+##### Nivel 1
+
+Rango de direcciones IPv4 del laboratorio:
+
+Rango de direcciones IPv6 del laboratorio:
+
+
+
