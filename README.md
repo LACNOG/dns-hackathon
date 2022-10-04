@@ -6,7 +6,7 @@
 
 El objetivo del Hackathon es por un lado plantear una serie de desafíos o actividades operativas en torno al Sistema de Nombres de Dominio (DNS) a realizar a lo largo de la semana, donde cada participante en forma individual o en grupos, vaya completando con la finalidad de mejorar, colaborar o adquirir experiencia en conjunto con el resto de los participantes.
 
-
+Recuerden que **no es necesario ni obligatorio completar todos los niveles**, lo que esperamos es que puedan elegir los temas que mas les interesan y profundizar en ellos.
 
 ## Niveles
 
