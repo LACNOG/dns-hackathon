@@ -48,9 +48,9 @@ Recuerden que **no es necesario ni obligatorio completar todos los niveles**, lo
 Donde en esta práctica **solamente** vamos a acceder a los siguientes equipos:
 
 * **grpX-cli** : cliente
-* **grpX-resolv1** y **grpX-resolv2** : servidores recursivos
-* **grpX-soa** : servidor autoritativo oculto (primario)
-* **grpX-ns1** y **grpX-ns2** : servidores autoritativos secundarios
+* **grpX-resolv1** (BIND preinstalado) y **grpX-resolv2** (UNBOUND preinstalado) : servidores recursivos
+* **grpX-soa** (BIND preinstalado) : servidor autoritativo oculto (primario)
+* **grpX-ns1** (BIND preinstalado) y **grpX-ns2** (NSD preinstalado) : servidores autoritativos secundarios
 
 
 
@@ -66,7 +66,7 @@ El mismo consta de 6 niveles (3 para servidores DNS Recursos y 3 para servidores
 
 #### A nivel de Recursivos
 
-1. Configurar dos servidores de DNS recursos uno de ellos utilizando el software BIND y el otro utilizando el software UNBOUND (asegurándoselas en particular de no generar un servidor DNS recurso abierto, limitando el acceso solamente a los bloques de direcciones del Laboratorio).
+1. Configurar dos servidores de DNS recursos uno de ellos utilizando el software BIND (***resolv1***) y el otro utilizando el software UNBOUND (***resolv2***) ; asegurándoselas en particular de no generar un servidor DNS recurso abierto, limitando el acceso solamente a los bloques de direcciones del Laboratorio.
 2. Configurar o verificar que se encuentra funcionando correctamente las extensiones/protocolos validación DNSSEC y QNAME Minimization.
 3. Configurar Hyperlocal de la Zona Raíz del DNS a nivel del servidor Recursivo.
 
@@ -74,8 +74,8 @@ El mismo consta de 6 niveles (3 para servidores DNS Recursos y 3 para servidores
 
 #### A nivel de Autoritativos
 
-1. Configurar un servidor Autoritativo siguiendo los lineamientos establecidos para la creación de la Zona, utilizando el software BIND.
-2. Configurar otros 2 servidores Autoritativos como secundarios del anterior, estableciendo lo necesario para que dichos secundarios sirvan la zona transfiriendo la misma desde el primario mediante el protocolo XFR. Estos 2 servidores públicos utilizarán los software BIND y NSD respectivamente.
+1. Configurar un servidor Autoritativo (***soa***) siguiendo los lineamientos establecidos para la creación de la Zona, utilizando el software BIND.
+2. Configurar otros 2 servidores Autoritativos (***ns1*** y ***ns2***) como secundarios del anterior, estableciendo lo necesario para que dichos secundarios sirvan la zona transfiriendo la misma desde el primario mediante el protocolo XFR. Estos 2 servidores públicos utilizarán los software BIND y NSD respectivamente.
 3. Firmar la Zona en el servidor primario utilizando el protocolo DNSSEC siguiendo los criterios establecidos para ello (algoritmo utilizado para la firma, tiempo de validez de la misma, etc).
 
 
