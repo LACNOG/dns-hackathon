@@ -110,6 +110,10 @@ Realizar dos configuraciones diferentes de QNAME Minimization y probarlas de la 
 - Configurar en modo Estricto
 - Volver a la configuración por defecto en modo Relajado
 
+Para probar si el QNAME Minimisation funciona siempre correctamente en modo estricto, pueden probar resolver el nombre ***hostname.lab.lacnic38.vulcano.cl*** con tipo A. Si tienen respuesta, entonces está en modo relajado. Si les devuelve NXDOMAIN, entonces está en modo estricto.
+
+Como extra, ¿quién pueda explicar por qué? ¿Qué tiene de especial ese nombre que entrega NXDOMAIN usando QNAME Min estricto?
+
 
 
 ##### Nivel 3
@@ -162,4 +166,36 @@ Para generar la firma DNSSEC de la Zona y luego firmar la misma están disponibl
 
 - Para la ZSK utilizar RSASHA256 de 1024 bits.
 - Para la KSK utilizar RSASHA256 de 2048 bits.
+
+
+
+**Para que la plataforma de laboratorio localice e ingrese el registro DS en la zona correspondiente, deberemos guardarlo en un archivo con el nombre *DS.record* en el directorio */var/dns/dnssec/keys***
+
+Para ello creamos el directorio correspondiente (y todos los directorios necesarios)
+
+```
+# mkdir -p /var/dns/dnssec/keys
+```
+
+Y ejecutamos el siguiente comando para obtener el registro DS y guardarlo en el archivo requerido
+
+```
+# dig @localhost dnskey grpX.lacnic38-dnshack.te-labs.training | dnssec-dsfromkey -f - grpX.lacnic38-dnshack.te-labs.training > /var/dns/dnssec/keys/DS.record
+```
+
+
+
+Verificamos el contenido del archivo generado
+
+```
+# cat /var/dns/dnssec/keys/DS.record
+```
+
+Que deberá contener algo parecido a la siguiente línea:
+
+```
+grpX.lacnic38-dnshack.te-labs.training. IN DS 23471 8 2 018A86C0139BA5500AC87A5BAD8FB5D8D4F9672C319B34DB5A7F3BC10A424D6E
+```
+
+*Luego de esto informamos al tutor del laboratorio que dejamos listo el archivo con el registro DS para que lo ingrese en la zona padre*.
 
