@@ -1,4 +1,14 @@
-# DNS Hackathon
+# DNS Hackathon (Lacnic 40)
+
+
+
+**Tutores**:
+
+* ***Carlos Martínez***
+
+* ***Hugo Salgado***
+
+* ***Nicolás Antoniello***
 
 
 
@@ -162,10 +172,9 @@ La dirección IPv4 del servidor Primario a utilizar para configurar la transfere
 
 ##### Nivel 3
 
-Para generar la firma DNSSEC de la Zona y luego firmar la misma están disponibles los comandos ***dnssec-keygen*** y ***dnssec-signzone*** respectivamente.
+Para firmar la zona con DNSSEC se debe utilizar el mecanismo **dnssec-policy** de Bind, utilizando la política **default**.
 
-- Para la ZSK utilizar RSASHA256 de 1024 bits.
-- Para la KSK utilizar RSASHA256 de 2048 bits.
+- Para simplificar esta tarea, generaremos y utilizaremos un solo par de claves (ZSK). Para la ZSK utilizar RSASHA256 de 1024 bits.
 
 
 
