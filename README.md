@@ -120,7 +120,7 @@ Realizar dos configuraciones diferentes de QNAME Minimization y probarlas de la 
 - Configurar en modo Estricto
 - Volver a la configuración por defecto en modo Relajado
 
-Para probar si el QNAME Minimisation funciona siempre correctamente en modo estricto, pueden probar resolver el nombre ***hostname.lab.lacnic38.vulcano.cl*** con tipo A. Si tienen respuesta, entonces está en modo relajado. Si les devuelve NXDOMAIN, entonces está en modo estricto.
+Para probar si el QNAME Minimisation funciona siempre correctamente en modo estricto, pueden probar resolver el nombre ***hostname.lab.lacnic40.vulcano.cl*** con tipo A. Si tienen respuesta, entonces está en modo relajado. Si les devuelve NXDOMAIN, entonces está en modo estricto.
 
 Como extra, ¿quién pueda explicar por qué? ¿Qué tiene de especial ese nombre que entrega NXDOMAIN usando QNAME Min estricto?
 
@@ -142,7 +142,7 @@ El contenido de la zona deberá ser al menos:
 ; grpX 
 
 $TTL    30
-@       IN      SOA     grpX.lacnic38-dnshack.te-labs.training. root.example.com (                                            
+@       IN      SOA     grpX.lacnic40-dns.te-labs.training. root.example.com (                                            
                               1         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
@@ -151,8 +151,8 @@ $TTL    30
 ;
 
 ; grpX 
-@             NS           ns1.grpX.lacnic38-dnshack.te-labs.training.
-@             NS           ns2.grpX.lacnic38-dnshack.te-labs.training.
+@             NS           ns1.grpX.lacnic40-dns.te-labs.training.
+@             NS           ns2.grpX.lacnic40-dns.te-labs.training.
 
 ns1         A           100.100.X.130
 ns1         AAAA        fdbc:44e3:X:128::130
@@ -189,7 +189,7 @@ Para ello creamos el directorio correspondiente (y todos los directorios necesar
 Y ejecutamos el siguiente comando para obtener el registro DS y guardarlo en el archivo requerido
 
 ```
-# dig @localhost dnskey grpX.lacnic38-dnshack.te-labs.training | dnssec-dsfromkey -f - grpX.lacnic38-dnshack.te-labs.training > /var/dns/dnssec/keys/DS.record
+# dig @localhost dnskey grpX.lacnic40-dns.te-labs.training | dnssec-dsfromkey -f - grpX.lacnic40-dns.te-labs.training > /var/dns/dnssec/keys/DS.record
 ```
 
 
@@ -203,7 +203,7 @@ Verificamos el contenido del archivo generado
 Que deberá contener algo parecido a la siguiente línea:
 
 ```
-grpX.lacnic38-dnshack.te-labs.training. IN DS 23471 8 2 018A86C0139BA5500AC87A5BAD8FB5D8D4F9672C319B34DB5A7F3BC10A424D6E
+grpX.lacnic40-dns.te-labs.training. IN DS 23471 8 2 018A86C0139BA5500AC87A5BAD8FB5D8D4F9672C319B34DB5A7F3BC10A424D6E
 ```
 
 *Luego de esto informamos al tutor del laboratorio que dejamos listo el archivo con el registro DS para que lo ingrese en la zona padre*.
