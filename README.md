@@ -203,7 +203,7 @@ Verificamos el contenido del archivo generado
 Que deberá contener algo parecido a la siguiente línea:
 
 ```
-grpX.lacnic41-dns.te-labs.training. IN DS 23471 8 2 018A86C0139BA5500AC87A5BAD8FB5D8D4F9672C319B34DB5A7F3BC10A424D6E
+grpX.lacnic41-dns.te-labs.training. IN DS 23471 13 2 018A86C0139BA5500AC87A5BAD8FB5D8D4F9672C319B34DB5A7F3BC10A424D6E
 ```
 
 *Luego de esto informamos al tutor del laboratorio que dejamos listo el archivo con el registro DS para que lo ingrese en la zona padre*.
