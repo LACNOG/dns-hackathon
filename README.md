@@ -1,4 +1,4 @@
-# DNS Hackathon (Lacnic 40)
+# DNS Hackathon (Lacnic 41)
 
 
 
@@ -78,7 +78,7 @@ El mismo consta de 6 niveles (3 para servidores DNS Recursos y 3 para servidores
 
 1. Configurar dos servidores de DNS recursos uno de ellos utilizando el software BIND (***resolv1***) y el otro utilizando el software UNBOUND (***resolv2***) ; asegurándoselas en particular de no generar un servidor DNS recurso abierto, limitando el acceso solamente a los bloques de direcciones del Laboratorio.
 2. Configurar o verificar que se encuentra funcionando correctamente las extensiones/protocolos validación DNSSEC y QNAME Minimization.
-3. Configurar Hyperlocal de la Zona Raíz del DNS a nivel del servidor Recursivo.
+3. Extra: Configurar Hyperlocal de la Zona Raíz del DNS a nivel del servidor Recursivo.
 
 
 
@@ -110,19 +110,19 @@ El mismo consta de 6 niveles (3 para servidores DNS Recursos y 3 para servidores
 
 ##### Nivel 2
 
-- Verificar que este realizando validación DNSSEC (por defecto viene activada tanto en BIND como en UNBOUND)Realizar dos configuraciones diferentes de QNAME Minimization y probarlas:
-  Primero configurar QNAME Minimization en modo Estricto
-
-
+- Verificar que este realizando validación DNSSEC (por defecto viene activada tanto en BIND como en UNBOUND). Realizar dos configuraciones diferentes de QNAME Minimization y probarlas:
+  Primero configurar QNAME Minimization en modo Estricto.
+  
+  
 
 Realizar dos configuraciones diferentes de QNAME Minimization y probarlas de la siguiente manera:
 
 - Configurar en modo Estricto
 - Volver a la configuración por defecto en modo Relajado
 
-Para probar si el QNAME Minimisation funciona siempre correctamente en modo estricto, pueden probar resolver el nombre ***hostname.lab.lacnic40.vulcano.cl*** con tipo A. Si tienen respuesta, entonces está en modo relajado. Si les devuelve NXDOMAIN, entonces está en modo estricto.
+Para probar si el QNAME Minimisation funciona siempre correctamente en modo estricto, pueden probar resolver el nombre ***hostname.lab.lacnic41.vulcano.cl*** con tipo A. Si tienen respuesta, entonces está en modo relajado. Si les devuelve NXDOMAIN, entonces está en modo estricto.
 
-Como extra, ¿quién pueda explicar por qué? ¿Qué tiene de especial ese nombre que entrega NXDOMAIN usando QNAME Min estricto?
+Como extra: ¿Puede explicar por qué? ¿Qué tiene de especial ese nombre que entrega NXDOMAIN usando QNAME Minimization en modo estricto?
 
 
 
@@ -136,13 +136,13 @@ Como extra, ¿quién pueda explicar por qué? ¿Qué tiene de especial ese nombr
 
 ##### Nivel 1
 
-El contenido de la zona deberá ser al menos:
+El contenido de la zona deberá ser al menos (siendo X el numero de grupo asignado):
 
 ```
 ; grpX 
 
 $TTL    30
-@       IN      SOA     grpX.lacnic40-dns.te-labs.training. root.example.com (                                            
+@       IN      SOA     grpX.lacnic41-dns.te-labs.training. root.example.com (                                            
                               1         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
@@ -151,8 +151,8 @@ $TTL    30
 ;
 
 ; grpX 
-@             NS           ns1.grpX.lacnic40-dns.te-labs.training.
-@             NS           ns2.grpX.lacnic40-dns.te-labs.training.
+@             NS           ns1.grpX.lacnic41-dns.te-labs.training.
+@             NS           ns2.grpX.lacnic41-dns.te-labs.training.
 
 ns1         A           100.100.X.130
 ns1         AAAA        fdbc:44e3:X:128::130
@@ -166,7 +166,7 @@ ns2         AAAA        fdbc:44e3:X:128::131
 
 ##### Nivel 2
 
-La dirección IPv4 del servidor Primario a utilizar para configurar la transferencia de zona en los servidores DNS Secundarios es: 100.100.X.66
+La dirección IPv4 del servidor Primario a utilizar para configurar la transferencia de zona en los servidores DNS Secundarios es: 100.100.X.66 (siendo X el numero de grupo asignado).
 
 
 
@@ -174,7 +174,7 @@ La dirección IPv4 del servidor Primario a utilizar para configurar la transfere
 
 Para firmar la zona con DNSSEC se debe utilizar el mecanismo **dnssec-policy** de Bind, utilizando la política **default**.
 
-- Para simplificar esta tarea, generaremos y utilizaremos un solo par de claves (ZSK). Para la ZSK utilizar RSASHA256 de 1024 bits.
+- Para simplificar esta tarea, generaremos y utilizaremos un solo par de claves (ZSK). Para la ZSK utilizar ECDSA Curve P-256 with SHA-256 (algoritmo No. 13).
 
 
 
@@ -189,7 +189,7 @@ Para ello creamos el directorio correspondiente (y todos los directorios necesar
 Y ejecutamos el siguiente comando para obtener el registro DS y guardarlo en el archivo requerido
 
 ```
-# dig @localhost dnskey grpX.lacnic40-dns.te-labs.training | dnssec-dsfromkey -f - grpX.lacnic40-dns.te-labs.training > /var/dns/dnssec/keys/DS.record
+# dig @localhost dnskey grpX.lacnic41-dns.te-labs.training | dnssec-dsfromkey -f - grpX.lacnic41-dns.te-labs.training > /var/dns/dnssec/keys/DS.record
 ```
 
 
@@ -203,7 +203,7 @@ Verificamos el contenido del archivo generado
 Que deberá contener algo parecido a la siguiente línea:
 
 ```
-grpX.lacnic40-dns.te-labs.training. IN DS 23471 8 2 018A86C0139BA5500AC87A5BAD8FB5D8D4F9672C319B34DB5A7F3BC10A424D6E
+grpX.lacnic41-dns.te-labs.training. IN DS 23471 8 2 018A86C0139BA5500AC87A5BAD8FB5D8D4F9672C319B34DB5A7F3BC10A424D6E
 ```
 
 *Luego de esto informamos al tutor del laboratorio que dejamos listo el archivo con el registro DS para que lo ingrese en la zona padre*.
