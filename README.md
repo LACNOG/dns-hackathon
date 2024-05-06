@@ -35,23 +35,23 @@ Recuerden que **no es necesario ni obligatorio completar todos los niveles**, lo
 ```
      EQUIPO          DIRECCION IPv4            DIRECCION IPv6
 +--------------+-----------------------+-----------------------------+
-| grpX-cli     | 100.100.X.2 (eth0)    | fdbc:44e3:X::2 (eth0)       |
+| grpX-cli     | 100.100.X.2 (eth0)    | fda2:44d5:X::2 (eth0)       |
 +--------------+-----------------------+-----------------------------+
-| grpX-ns1     | 100.100.X.130 (eth0)  | fdbc:44e3:X:128::130 (eth0) |
+| grpX-ns1     | 100.100.X.130 (eth0)  | fda2:44d5:X:128::130 (eth0) |
 +--------------+-----------------------+-----------------------------+
-| grpX-ns2     | 100.100.X.131 (eth0)  | fdbc:44e3:X:128::131 (eth0) |
+| grpX-ns2     | 100.100.X.131 (eth0)  | fda2:44d5:X:128::131 (eth0) |
 +--------------+-----------------------+-----------------------------+
-| grpX-resolv1 | 100.100.X.67 (eth0)   | fdbc:44e3:X:64::67 (eth0)   |
+| grpX-resolv1 | 100.100.X.67 (eth0)   | fda2:44d5:X:64::67 (eth0)   |
 +--------------+-----------------------+-----------------------------+
-| grpX-resolv2 | 100.100.X.68 (eth0)   | fdbc:44e3:X:64::68 (eth0)   |
+| grpX-resolv2 | 100.100.X.68 (eth0)   | fda2:44d5:X:64::68 (eth0)   |
 +--------------+-----------------------+-----------------------------+
-| grpX-rtr     | 100.64.1.X (eth0)     | fdbc:44e3:X::1 (eth1)       |
-|              | 100.100.X.65 (eth2)   | fdbc:44e3:X:64::1 (eth2)    |
-|              | 100.100.X.193 (eth4)  | fdbc:44e3:X:192::1 (eth4)   |
-|              | 100.100.X.129 (eth3)  | fdbc:44e3:X:128::1 (eth3)   |
-|              | 100.100.X.1 (eth1)    | fdbc:44e3:0:1::X (eth0)     |
+| grpX-rtr     | 100.64.1.X (eth0)     | fda2:44d5:X::1 (eth1)       |
+|              | 100.100.X.65 (eth2)   | fda2:44d5:X:64::1 (eth2)    |
+|              | 100.100.X.193 (eth4)  | fda2:44d5:X:192::1 (eth4)   |
+|              | 100.100.X.129 (eth3)  | fda2:44d5:X:128::1 (eth3)   |
+|              | 100.100.X.1 (eth1)    | fda2:44d5:0:1::X (eth0)     |
 +--------------+-----------------------+-----------------------------+
-| grpX-soa     | 100.100.X.66 (eth0)   | fdbc:44e3:X:64::66 (eth0)   |
+| grpX-soa     | 100.100.X.66 (eth0)   | fda2:44d5:X:64::66 (eth0)   |
 +--------------+-----------------------+-----------------------------+
 ```
 
@@ -103,7 +103,7 @@ El mismo consta de 6 niveles (3 para servidores DNS Recursos y 3 para servidores
 ##### Nivel 1
 
 - Rango de direcciones IPv4 del laboratorio: 100.100.0.0/16
-- Rango de direcciones IPv6 del laboratorio: fdbc:44e3::/32
+- Rango de direcciones IPv6 del laboratorio: fda2:44d5::/32
 - Asegurarse de permitir tanto consultas por IPv4 como por IPv6
 
 
@@ -155,9 +155,9 @@ $TTL    30
 @             NS           ns2.grpX.lacnic41-dns.te-labs.training.
 
 ns1         A           100.100.X.130
-ns1         AAAA        fdbc:44e3:X:128::130
+ns1         AAAA        fda2:44d5:X:128::130
 ns2         A           100.100.X.131
-ns2         AAAA        fdbc:44e3:X:128::131
+ns2         AAAA        fda2:44d5:X:128::131
 
 ;; SE PUEDEN AGREGAR MAS REGISTROS A GUSTO
 ```
